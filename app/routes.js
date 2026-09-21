@@ -117,12 +117,28 @@ router.get('/DOS72ExisitngYourAccount', (req, res) => {
 	res.render('DOS72ExisitngYourAccount')
 })
 
-router.get('/DOS72ExistingOptInOut.html', (req, res) => {
-	res.render('DOS72ExistingOptInOut')
+router.get('/DOS72ExistingOptInSuccess.html', (req, res) => {
+	res.render('DOS72ExistingOptInSuccess')
 })
 
-router.get('/DOS72ExistingOptInOut', (req, res) => {
-	res.render('DOS72ExistingOptInOut')
+router.get('/DOS72ExistingOptInSuccess', (req, res) => {
+	res.render('DOS72ExistingOptInSuccess')
+})
+
+router.get('/DOS72ExistingOptOut.html', (req, res) => {
+	res.render('DOS72ExistingOptOut')
+})
+
+router.get('/DOS72ExistingOptOut', (req, res) => {
+	res.render('DOS72ExistingOptOut')
+})
+
+router.get('/DOS72ExistingOptOutSuccess.html', (req, res) => {
+	res.render('DOS72ExistingOptOutSuccess')
+})
+
+router.get('/DOS72ExistingOptOutSuccess', (req, res) => {
+	res.render('DOS72ExistingOptOutSuccess')
 })
 
 router.get('/DOS72ExistingProgress.html', (req, res) => {
@@ -131,6 +147,14 @@ router.get('/DOS72ExistingProgress.html', (req, res) => {
 
 router.get('/DOS72ExistingProgress', (req, res) => {
 	res.render('DOS72ExistingProgress')
+})
+
+router.get('/DOS72ExistingProgressOptInSuccess.html', (req, res) => {
+	res.render('DOS72ExistingProgressOptInSuccess')
+})
+
+router.get('/DOS72ExistingProgressOptInSuccess', (req, res) => {
+	res.render('DOS72ExistingProgressOptInSuccess')
 })
 
 router.get('/DOS72ExistingDeclaration.html', (req, res) => {
@@ -330,7 +354,11 @@ router.post('/DOS72OptInOut', (req, res) => {
 	const selectedOption = req.body['dos72-opt-choice']
 
 	if (selectedOption === 'opt-in') {
-		return res.redirect('/DOS72ExistingOptInOut')
+		return res.redirect('/DOS72ExistingOptInSuccess')
+	}
+
+	if (selectedOption === 'opt-out-current-supplier') {
+		return res.redirect('/DOS72ExistingOptOut')
 	}
 
 	if (selectedOption === 'opt-out') {
@@ -356,6 +384,14 @@ router.get('/DOS72OptOutNarrative', (req, res) => {
 	res.render('DOS72OptOutNarrative')
 })
 
+router.get('/DOS72ExistingOptOutNarrative.html', (req, res) => {
+	res.render('DOS72ExistingOptOutNarrative')
+})
+
+router.get('/DOS72ExistingOptOutNarrative', (req, res) => {
+	res.render('DOS72ExistingOptOutNarrative')
+})
+
 router.get('/DOS72ExistingStartAgainNarrative.html', (req, res) => {
 	res.render('DOS72ExistingStartAgainNarrative')
 })
@@ -369,29 +405,33 @@ router.post('/DOS72ExistingStartAgainNarrative', (req, res) => {
 })
 
 router.post('/DOS72OptOutNarrative', (req, res) => {
-	res.redirect('/DOS72AreYouSure')
+	res.redirect('/DOS72ExistingOptOutAreYouSure')
 })
 
-router.get('/DOS72AreYouSure.html', (req, res) => {
-	res.render('DOS72AreYouSure')
+router.post('/DOS72ExistingOptOutNarrative', (req, res) => {
+	res.redirect('/DOS72ExistingOptOutAreYouSure')
 })
 
-router.get('/DOS72AreYouSure', (req, res) => {
-	res.render('DOS72AreYouSure')
+router.get('/DOS72ExistingOptOutAreYouSure.html', (req, res) => {
+	res.render('DOS72ExistingOptOutAreYouSure')
 })
 
-router.post('/DOS72AreYouSure', (req, res) => {
+router.get('/DOS72ExistingOptOutAreYouSure', (req, res) => {
+	res.render('DOS72ExistingOptOutAreYouSure')
+})
+
+router.post('/DOS72ExistingOptOutAreYouSure', (req, res) => {
 	const confirmOptOut = req.body['dos72-opt-out-confirm']
 
 	if (confirmOptOut === 'yes') {
-		return res.redirect('/DOS72OptOutSuccess')
+		return res.redirect('/DOS72ExistingOptOutSuccess')
 	}
 
 	if (confirmOptOut === 'no') {
-		return res.redirect('/DOS72OptOutNarrative')
+		return res.redirect('/DOS72ExistingOptOut')
 	}
 
-	res.redirect('/DOS72AreYouSure')
+	res.redirect('/DOS72ExistingOptOutAreYouSure')
 })
 
 router.get('/DOS72OptOutSuccess.html', (req, res) => {

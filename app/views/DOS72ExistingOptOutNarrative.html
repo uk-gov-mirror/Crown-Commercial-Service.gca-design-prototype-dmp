@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "DOS 7.2 opt out narrative" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">DOS 7.2 opt out narrative</h1>
+    <p class="govuk-body">You selected DOS 7.2 Opt out.</p>
+
+    <p class="govuk-body">If you select to Opt out of DOS 7.2, you will only be able to sell your services on previous versions of DOS. 
+        This means you will not have access to the latest features and updates available in DOS 7.2.
+    </p>
+
+    <p class="govuk-body">Please consider the implications carefully before opting out of DOS 7.2.</p>
+    <p class="govuk-body"><strong>This action is not reversible.</strong></p>
+
+    <form method="post" action="/DOS72ExistingOptOutNarrative">
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Cancel",
+          href: "/DOS72ExistingOptOut",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+    </form>
+
+    <p class="govuk-body">
+      <a class="govuk-link" href="/DOS72ExistingOptOut">Back to DOS 7.2 opt out</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
